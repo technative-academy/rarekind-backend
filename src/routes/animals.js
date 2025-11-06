@@ -44,6 +44,7 @@ router.post('/', (req, res) => {
 			collection_id: req.body.collection_id,
 			name: req.body.name,
 			description: req.body.description,
+			species: req.body.species,
 			image_url: req.body.image_url,
 		}
 
