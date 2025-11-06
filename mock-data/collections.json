@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "name": "Lizards Collection"
+  },
+  {
+    "id": 2,
+    "user_id": 2,
+    "name": "Frogs and Amphibians"
+  },
+  {
+    "id": 3,
+    "user_id": 1,
+    "name": "Snakes Collection"
+  },
+  {
+    "id": 4,
+    "user_id": 3,
+    "name": "Tropical Fish and Marine Creatures"
+  }
+]
