@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
             id: collections.length + 1,
             user_id: req.body.user_id,
             name: req.body.name,
+            description: req.body.description || '',
         }
 
         collections.push(newCollection)
