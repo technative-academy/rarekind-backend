@@ -1,0 +1,30 @@
+[
+	{
+		"id": 1,
+		"collection_id": 101,
+		"name": "Axolotl",
+		"description": "A neotenic salamander native to Mexico, known for its feathery gills and remarkable ability to regenerate limbs. :contentReference[oaicite:0]{index=0}",
+		"image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Axolotl_(Ambystoma_mexicanum)_2.jpg"
+	},
+	{
+		"id": 2,
+		"collection_id": 21,
+		"name": "Fossa",
+		"description": "A carnivorous mammal found only in Madagascar, the top predator on the island. :contentReference[oaicite:1]{index=1}",
+		"image_url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Fossa_%28Cryptoprocta_ferox%29.jpg"
+	},
+	{
+		"id": 3,
+		"collection_id": 24,
+		"name": "Okapi",
+		"description": "A shy forest-dwelling mammal from the Democratic Republic of the Congo; looks like a mix between a zebra and giraffe but is the giraffe’s only living relative. :contentReference[oaicite:2]{index=2}",
+		"image_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Okapi_%28Okapia_johnstoni%29.jpg"
+	},
+	{
+		"id": 4,
+		"collection_id": 101,
+		"name": "Shoebill",
+		"description": "A large African wading bird with a prehistoric look, named for its massive shoe-shaped bill that helps it catch lungfish in swamps. :contentReference[oaicite:3]{index=3}",
+		"image_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Shoebill.jpg"
+	}
+]
