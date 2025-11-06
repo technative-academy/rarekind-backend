@@ -1,14 +1,14 @@
 [
-  {
-    "id": 1,
-    "username": "yashmagane",
-    "bio": "Loves reptiles and exotic pets"
-  },
-  { "id": 2, "username": "yorickPlaza", "bio": "Collector of rare amphibians" },
-  {
-    "id": 3,
-    "username": "mattNightTime",
-    "bio": "Herpetologist and wildlife enthusiast"
-  },
-  { "id": 4, "username": "louiseLizardQueen", "bio": "Reptile rescue advocate" }
+    {
+        "id": 1,
+        "username": "yashmagane",
+        "bio": "Loves reptiles and exotic pets"
+    },
+    { "id": 2, "username": "yorickPlaza", "bio": "Collector of rare amphibians" },
+    {
+        "id": 3,
+        "username": "mattNightTime",
+        "bio": "Herpetologist and wildlife enthusiast"
+    },
+    { "id": 4, "username": "louiseLizardQueen", "bio": "Reptile rescue advocate" }
 ]
