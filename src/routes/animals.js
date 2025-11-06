@@ -34,4 +34,30 @@ router.get('/:id', (req, res) => {
     }
 })
 
+router.post('/', (req, res) => {
+	try {
+		const dataPath = path.resolve('mock-data/animals.json')
+		const animals = JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+
+		const newAnimal = {
+			id: animals.length + 1,
+			collection_id: req.body.collection_id,
+			name: req.body.name,
+			description: req.body.description,
+			image_url: req.body.image_url,
+		}
+
+		animals.push(newAnimal)
+		fs.writeFileSync(dataPath, JSON.stringify(animals, null, 2))
+
+		res.status(201).json({
+			message: 'Animal created successfully',
+			animal: newAnimal,
+		})
+	} catch (error) {
+		console.error('Error writing to animals.json:', error)
+		res.status(500).json({ message: 'Error creating animal' })
+	}
+})
+
 export default router
