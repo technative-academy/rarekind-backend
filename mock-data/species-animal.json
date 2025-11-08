@@ -1,0 +1,14 @@
+[
+  {
+    "animal_id": 1,
+    "species_id": 2
+  },
+  {
+    "animal_id": 2,
+    "species_id": 1
+  },
+  {
+    "animal_id": 3,
+    "species_id": 1
+  }
+]
