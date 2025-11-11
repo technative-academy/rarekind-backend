@@ -1,14 +1,20 @@
 [
     {
         "id": 1,
-        "username": "yashmagane",
-        "bio": "Loves reptiles and exotic pets"
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "password": "$2a$10$N9qo8uLOickgx2ZMRZo5e.P7Yf3vYqSxjI9iJg8cYP9Tuy8W8F/8e"
     },
-    { "id": 2, "username": "yorickPlaza", "bio": "Collector of rare amphibians" },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "janesmith@example.com",
+        "password": "$2a$10$wH4D.0kJ53ZKXwYhFiKjOu6aQSmgDK3kzOGH1hOtfJwZ0zJ4i5Q8u"
+    },
     {
         "id": 3,
-        "username": "mattNightTime",
-        "bio": "Herpetologist and wildlife enthusiast"
-    },
-    { "id": 4, "username": "louiseLizardQueen", "bio": "Reptile rescue advocate" }
+        "name": "Yash Magane",
+        "email": "yash@example.com",
+        "password": "$2b$10$jTpSrsK5tDVnneqnR6hCde.kr7zkurXiy3XUyfI2/59omo.ywJQUS"
+    }
 ]
