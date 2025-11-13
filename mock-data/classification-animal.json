@@ -1,0 +1,18 @@
+[
+    {
+        "animal_id": 1,
+        "classification_id": 1
+    },
+    {
+        "animal_id": 2,
+        "classification_id": 3
+    },
+    {
+        "animal_id": 3,
+        "classification_id": 3
+    },
+    {
+        "animal_id": 4,
+        "classification_id": 2
+    }
+]
