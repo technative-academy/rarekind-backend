@@ -6,6 +6,7 @@ import classificationRoutes from './src/routes/classifications.js'
 import authRouter from './src/routes/auth.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import "./src/db/connection.js";
 
 dotenv.config()
 
