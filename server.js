@@ -10,6 +10,7 @@ import authRouter from './src/routes/auth.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import './src/db/connection.js'
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
@@ -25,13 +26,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    next()
-})
-
 app.use(express.json())
 app.use('/users', usersRoutes)
 app.use('/animals', animalsRoutes)
