@@ -3,7 +3,16 @@ import * as CollectionsModel from '../models/collectionModel.js'
 export const getCollections = async (req, res) => {
     try {
         const collections = await CollectionsModel.getAllCollections()
-        res.status(200).json(collections)
+        const collectionsOfAnimals = await Promise.all(
+            collections.map(async (collection) => {
+                const animals = await CollectionsModel.getAnimalsByCollectionId(collection.id)
+                return {
+                    ...collection,
+                    animals,
+                }
+            })
+        )
+        res.status(200).json(collectionsOfAnimals)
     } catch (err) {
         console.error(err)
         res.status(500).json({ error: 'Failed to fetch collections' })
