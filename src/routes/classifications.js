@@ -46,7 +46,7 @@ router.post('/link', (req, res) => {
 
         const newLink = {
             animal_id: req.body.animal_id,
-            classification_id: req.body.classification_id,
+            classification: req.body.classification,
         }
 
         links.push(newLink)
