@@ -39,5 +39,4 @@ app.use('/classifications', classificationRoutes)
 app.use('/auth', authRouter)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
