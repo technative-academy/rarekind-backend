@@ -8,7 +8,7 @@ export const getCollections = async (req, res) => {
                 const animals = await CollectionsModel.getAnimalsByCollectionId(collection.id)
                 return {
                     ...collection,
-                    animals
+                    animals,
                 }
             })
         )

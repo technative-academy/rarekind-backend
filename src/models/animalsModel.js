@@ -11,7 +11,9 @@ export const getAnimalById = async (id) => {
 }
 
 export const getAnimalsByCollectionId = async (collection_id) => {
-    const [rows] = await pool.query('SELECT * FROM animals WHERE collection_id = ?', [collection_id])
+    const [rows] = await pool.query('SELECT * FROM animals WHERE collection_id = ?', [
+        collection_id,
+    ])
     return rows
 }
 
