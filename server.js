@@ -15,12 +15,16 @@ dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3000
-
 const file = fs.readFileSync('src/docs/RareFind.yaml', 'utf8')
 const swaggerDocument = YAML.parse(file)
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-app.use(cors())
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+}
+
+app.use(cors(corsOptions))
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
