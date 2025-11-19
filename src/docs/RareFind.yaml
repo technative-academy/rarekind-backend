@@ -1,0 +1,444 @@
+openapi: 3.0.0
+info:
+  title: RareKind API
+  version: 2.0.0
+  description: 'API for RareKind Exotic Animals — manages users, collections, animals, and classifications.'
+tags:
+  - name: User Login
+    description: Operations related to logins
+  - name: Users
+    description: Operations related to users
+  - name: Collections
+    description: Operations related to collections
+  - name: Animals
+    description: Operations related to animals
+  - name: Classification
+    description: Operations related to classifications
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: 'https://virtserver.swaggerhub.com/yash-59f/Rarekind/2.0.0'
+  - url: 'http://localhost:3000'
+    description: Local development server
+paths:
+  /auth/register:
+    post:
+      tags:
+        - User Login
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: Username already exists
+
+  /auth/login:
+    post:
+      tags:
+        - User Login
+      summary: Login an existing user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful — returns JWT token
+        '401':
+          description: Invalid username or password
+
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Get all users
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    bio:
+                      type: string
+
+  '/users/{id}':
+    get:
+      tags:
+        - Users
+      summary: Get a user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: Authorization
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved user details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  bio:
+                    type: string
+        '404':
+          description: User not found
+  /users/{id}/collections:
+    get:
+      tags:
+        - Users
+      summary: Get all collections for a specific user
+      description: Returns all collections created by the specified user.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the user
+      responses:
+        '200':
+          description: List of collections for the user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Collection'
+        '404':
+          description: User not found
+
+  /collections:
+    get:
+      tags:
+        - Collections
+      summary: Get all collections
+      responses:
+        '200':
+          description: List of all collections
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Collection'
+    post:
+      tags:
+        - Collections
+      summary: Create a new collection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collection'
+      responses:
+        '201':
+          description: Collection created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  collection:
+                    $ref: '#/components/schemas/Collection'
+  /collections/{id}:
+    get:
+      tags:
+        - Collections
+      summary: Get a collection by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Collection details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        '404':
+          description: Collection not found
+
+    put:
+      tags:
+        - Collections
+      summary: Update a collection by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionUpdateRequest'
+      responses:
+        '200':
+          description: Collection updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        '400':
+          description: Invalid request body
+        '404':
+          description: Collection not found
+
+    delete:
+      tags:
+        - Collections
+      summary: Delete a collection by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Collection deleted successfully
+        '404':
+          description: Collection not found
+
+  /collections/{id}/animals:
+    get:
+      tags:
+        - Collections
+      summary: Get all animals in a collection
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of animals in the collection
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Animal'
+        '404':
+          description: Collection not found
+  /animals:
+    get:
+      tags:
+        - Animals
+      summary: Get all animals
+      responses:
+        '200':
+          description: List of all animals
+
+    post:
+      tags:
+        - Animals
+      summary: Add a new animal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Animal'
+      responses:
+        '201':
+          description: Animal added successfully
+
+  /classification:
+    get:
+      tags:
+        - Classification
+      summary: Get all classifications
+      responses:
+        '200':
+          description: List of all classifications
+
+
+  /classification-animal:
+    post:
+      tags:
+        - Classification
+      summary: Link an animal with a classification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassificationAnimal'
+      responses:
+        '201':
+          description: Relationship created successfully
+
+  '/animals/{id}':
+    get:
+      tags:
+        - Animals
+      summary: Get an animal by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Animal details
+        '404':
+          description: Animal not found
+
+    put:
+      tags:
+        - Animals
+      summary: Update an existing animal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Animal'
+      responses:
+        '200':
+          description: Animal updated successfully
+        '404':
+          description: Animal not found
+
+    delete:
+      tags:
+        - Animals
+      summary: Delete an animal by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Animal deleted successfully
+        '404':
+          description: Animal not found
+
+components:
+  schemas:
+    RegisterRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        bio:
+          type: string
+
+    LoginRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        bio:
+          type: string
+
+    Collection:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+
+    Animal:
+      type: object
+      properties:
+        id:
+          type: integer
+        collection_id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        image_url:
+          type: string
+
+    Classification:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    ClassificationAnimal:
+      type: object
+      properties:
+        animal_id:
+          type: integer
+        classification_id:
+          type: integer
