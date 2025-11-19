@@ -12,13 +12,19 @@ export const getCollections = async (req, res) => {
 
 export const addCollection = async (req, res) => {
     try {
-        const { user_id, name } = req.body
+        const { user_id, name, description, animals, classifications } = req.body
 
         if (!user_id || !name) {
             return res.status(400).json({ error: 'user_id and name are required' })
         }
 
-        const newCollection = await CollectionsModel.createCollection({ user_id, name })
+        const newCollection = await CollectionsModel.createCollection({
+            user_id,
+            name,
+            description,
+            animals,
+            classifications,
+        })
 
         res.status(201).json(newCollection)
     } catch (err) {

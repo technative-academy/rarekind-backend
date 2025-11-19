@@ -5,15 +5,32 @@ export const getAllCollections = async () => {
     return rows
 }
 
-export const createCollection = async ({ user_id, name }) => {
-    const [result] = await pool.query('INSERT INTO collections (user_id, name) VALUES (?, ?)', [
-        user_id,
-        name,
-    ])
+export const createCollection = async ({
+    user_id,
+    name,
+    description,
+    animals,
+    classifications,
+}) => {
+    const [result] = await pool.query(
+        `INSERT INTO collections 
+        (user_id, name, description, animals, classifications, created_at, updated_at) 
+        VALUES (?, ?, ?, ?, ?, NOW(), NOW())`,
+        [
+            user_id,
+            name,
+            description || null,
+            JSON.stringify(animals) || null,
+            JSON.stringify(classifications) || null,
+        ]
+    )
 
     return {
         id: result.insertId,
         user_id,
         name,
+        description,
+        animals,
+        classifications,
     }
 }
