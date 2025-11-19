@@ -10,6 +10,7 @@ import authRouter from './src/routes/auth.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import './src/db/connection.js'
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
@@ -18,25 +19,24 @@ const PORT = process.env.PORT || 3000
 const file = fs.readFileSync('src/docs/RareFind.yaml', 'utf8')
 const swaggerDocument = YAML.parse(file)
 
+// Define CORS options to allow requests from the specified origin and include credentials
+// This is crucial when using HTTP cookies for authentication, as cookies are not shared across domains by default
+// Includes credentials (such as cookies) in requests and responses
 const corsOptions = {
     origin: process.env.CORS_ORIGIN,
     credentials: true,
 }
 
 app.use(cors(corsOptions))
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    next()
-})
-
 app.use(express.json())
+
+app.use(cookieParser())
+
 app.use('/users', usersRoutes)
 app.use('/animals', animalsRoutes)
 app.use('/collections', collectionsRoutes)
 app.use('/classifications', classificationRoutes)
 app.use('/auth', authRouter)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
