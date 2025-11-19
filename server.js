@@ -26,7 +26,6 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
