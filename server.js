@@ -1,4 +1,7 @@
 import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+import fs from 'fs'
+import YAML from 'yaml'
 import usersRoutes from './src/routes/users.js'
 import animalsRoutes from './src/routes/animals.js'
 import collectionsRoutes from './src/routes/collections.js'
@@ -12,6 +15,10 @@ dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3000
+
+const file = fs.readFileSync('src/docs/RareFind.yaml', 'utf8')
+const swaggerDocument = YAML.parse(file)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use(cors())
 
