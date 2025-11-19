@@ -23,10 +23,20 @@ export const getAnimal = async (req, res) => {
 
 export const addAnimal = async (req, res) => {
     try {
-        const newAnimal = await AnimalsModel.createAnimal(req.body)
-        res.status(201).json(newAnimal)
+        const animals = Array.isArray(req.body) ? req.body : [req.body]
+        const results = []
+
+        for (const animal of animals) {
+            if (!animal.collection_id || !animal.name) {
+                return res.status(400).json({ error: 'collection_id and name are required' })
+            }
+            const newAnimal = await AnimalsModel.createAnimal(animal)
+            results.push(newAnimal)
+        }
+
+        res.status(201).json(results)
     } catch (err) {
         console.error(err)
-        res.status(500).json({ error: 'Failed to create animal' })
+        res.status(500).json({ error: 'Failed to create animals' })
     }
 }

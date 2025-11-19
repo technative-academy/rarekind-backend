@@ -32,3 +32,20 @@ export const addCollection = async (req, res) => {
         res.status(500).json({ error: 'Failed to create collection' })
     }
 }
+
+export const getAnimalsInCollection = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const animals = await CollectionsModel.getAnimalsByCollectionId(id)
+
+        res.status(200).json({
+            collection_id: id,
+            animal_count: animals.length,
+            animals,
+        })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Failed to fetch animals for this collection' })
+    }
+}

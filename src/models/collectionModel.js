@@ -34,3 +34,10 @@ export const createCollection = async ({
         classifications,
     }
 }
+
+export const getAnimalsByCollectionId = async (collectionId) => {
+    const [rows] = await pool.query('SELECT * FROM animals WHERE collection_id = ?', [
+        collectionId,
+    ])
+    return rows
+}
