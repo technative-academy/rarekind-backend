@@ -5,6 +5,11 @@ export const getAllCollections = async () => {
     return rows
 }
 
+export const getCollectionById = async (id) => {
+    const [rows] = await pool.query('SELECT * FROM collections WHERE id = ?', [id])
+    return rows[0]
+}
+
 export const createCollection = async ({
     user_id,
     name,

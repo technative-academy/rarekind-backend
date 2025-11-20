@@ -19,6 +19,27 @@ export const getCollections = async (req, res) => {
     }
 }
 
+export const getCollectionById = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const collection = await CollectionsModel.getCollectionById(id)
+        if (!collection) {
+            return res.status(404).json({ error: 'Collection not found' })
+        }
+
+        const animals = await CollectionsModel.getAnimalsByCollectionId(id)
+
+        res.status(200).json({
+            ...collection,
+            animals,
+        })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Failed to fetch collection' })
+    }
+}
+
 export const addCollection = async (req, res) => {
     try {
         const { user_id, name, description, animals, classifications } = req.body
