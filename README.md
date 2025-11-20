@@ -67,7 +67,7 @@ CORS_ORIGIN=
 
 SQL for creating the database
 
-- [Script]()
+- [Script](https://github.com/technative-academy/rarekind-backend/blob/main/src/docs/rarekind_db.sql)
 
 ### 🚀 Running the Server
 
@@ -161,7 +161,7 @@ RareKind follows a clean and scalable Express.js structure:
 
 ### SQL for creating the database
 
-- [Script]()
+- [Script](https://github.com/technative-academy/rarekind-backend/blob/main/src/docs/rarekind_db.sql)
 
 ---
 
