@@ -29,6 +29,7 @@ and visualised using **MySQL Workbench**.
 ## 🛠️ Installation Guide
 
 ### 📌 Prerequisites
+
 Make sure you have the following installed on your system:
 
 - **Node.js** (v18 or higher)
@@ -61,19 +62,23 @@ MYSQL_DATABASE=railway
 
 CORS_ORIGIN=
 ```
+
 ### 🗄️ Database Setup
 
 SQL for creating the database
+
 - [Script]()
 
 ### 🚀 Running the Server
 
 To start the backend:
+
 ```bash
-npm start 
+npm start
 ```
 
 ### 🔍 Testing the Endpoints
+
 Once the server is running, you can test routes using Postman
 
 ## 🖥️ Features
