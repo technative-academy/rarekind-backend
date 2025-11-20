@@ -58,3 +58,9 @@ export const getAnimalsInCollection = async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch animals for this collection' })
     }
 }
+
+export const getUserCollections = async (req, res) => {
+    const user_id = req.params.id
+    const collections = await CollectionsModel.getCollectionsByUserId(user_id)
+    res.status(200).json(collections)
+}
