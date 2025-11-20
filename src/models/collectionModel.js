@@ -41,3 +41,8 @@ export const getAnimalsByCollectionId = async (collectionId) => {
     ])
     return rows
 }
+
+export const getCollectionsByUserId = async (user_id) => {
+    const [rows] = await pool.query('SELECT * FROM collections WHERE user_id = ?', [user_id])
+    return rows
+}
