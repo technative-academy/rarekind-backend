@@ -13,8 +13,8 @@ export const createCollection = async ({
     classifications,
 }) => {
     const [result] = await pool.query(
-        `INSERT INTO collections 
-        (user_id, name, description, animals, classifications, created_at, updated_at) 
+        `INSERT INTO collections
+        (user_id, name, description, animals, classifications, created_at, updated_at)
         VALUES (?, ?, ?, ?, ?, NOW(), NOW())`,
         [
             user_id,
@@ -36,7 +36,7 @@ export const createCollection = async ({
 }
 
 export const getAnimalsByCollectionId = async (collectionId) => {
-    const [rows] = await pool.query('SELECT * FROM animals WHERE collection_id = ?', [
+    const [rows] = await pool.query('SELECT  a.id, a.collection_id, a.name, a.classification_id, c.name AS classification_name, a.description, a.image_url FROM animals AS a JOIN classifications AS c ON a.classification_id = c.id WHERE a.collection_id = ?', [
         collectionId,
     ])
     return rows
