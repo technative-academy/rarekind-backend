@@ -181,6 +181,17 @@ RareKind is deployed on Railway, featuring:
 
 ---
 
+## Documentation Update Checklist
+
+Whenever we change database tables, models, controllers, or endpoints, update:
+
+- Database schema /docs/rarekind_db
+- models /src/models/
+- controllers /src/controllers/
+- routes /src/routes/
+- API Documentation /docs/RareFind.yaml
+- README endpoint Examples
+
 ## 🤝 Authors
 
 ### Backend
