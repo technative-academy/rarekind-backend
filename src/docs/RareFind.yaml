@@ -397,7 +397,9 @@ components:
                     type: integer
                 name:
                     type: string
-                classification:
+                classification_id:
+                    type: integer
+                classification_name:
                     type: string
                 description:
                     type: string
