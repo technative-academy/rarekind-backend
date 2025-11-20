@@ -26,6 +26,56 @@ and visualised using **MySQL Workbench**.
 
 ---
 
+## 🛠️ Installation Guide
+
+### 📌 Prerequisites
+Make sure you have the following installed on your system:
+
+- **Node.js** (v18 or higher)
+- **npm** (v6 or higher)
+- **MySQL** (v8 or higher)
+- **MySQL Workbench** (optional, for visual DB inspection)
+
+---
+
+### 📦 Install Dependencies
+
+```bash
+npm install
+```
+
+### Environmental Variables
+
+Create a .env file in the root of your project.
+Below is the exact format required for this application:
+
+```bash
+JWT_SECRET=
+REFRESH_SECRET=
+
+MYSQL_HOST=
+MYSQL_PORT=53093
+MYSQL_USER=root
+MYSQL_PASSWORD=
+MYSQL_DATABASE=railway
+
+CORS_ORIGIN=
+```
+### 🗄️ Database Setup
+
+SQL for creating the database
+- [Script]()
+
+### 🚀 Running the Server
+
+To start the backend:
+```bash
+npm start 
+```
+
+### 🔍 Testing the Endpoints
+Once the server is running, you can test routes using Postman
+
 ## 🖥️ Features
 
 ### 👤 Authentication
@@ -87,10 +137,6 @@ RareKind follows a clean and scalable Express.js structure:
 
 - Cloudinary
 
-### Additional Notes
-
-- MySQL
-
 ---
 
 ## 🗄️ Database Design
@@ -113,6 +159,11 @@ RareKind follows a clean and scalable Express.js structure:
 - [Script]()
 
 ---
+
+## Testing
+
+When testing endpoints we used an extension on VS code called Postman, The Screenshot below shows testing the endpoint /auth/register
+![alt text](image.png)
 
 ## 🚀 Deployment
 
