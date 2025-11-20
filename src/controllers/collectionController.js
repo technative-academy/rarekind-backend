@@ -64,3 +64,33 @@ export const getUserCollections = async (req, res) => {
     const collections = await CollectionsModel.getCollectionsByUserId(user_id)
     res.status(200).json(collections)
 }
+
+export const updateCollection = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { name, description } = req.body
+
+        if (!name && !description) {
+            return res.status(400).json({ error: 'Nothing to update' })
+        }
+
+        const result = await CollectionsModel.updateCollectionById(id, {
+            name,
+            description,
+        })
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Collection not found' })
+        }
+
+        res.status(200).json({
+            id,
+            name,
+            description,
+            updated_at: new Date(),
+        })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Failed to update collection' })
+    }
+}
