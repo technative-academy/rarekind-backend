@@ -21,7 +21,7 @@ const swaggerDocument = YAML.parse(file)
 
 // Define CORS options to allow requests from the specified origin and include credentials
 // This is crucial when using HTTP cookies for authentication, as cookies are not shared across domains by default
-// Includes credentials (such as cookies) in requests and responses
+// Includes credentials (such as cookies) in requests and responses.
 const corsOptions = {
     origin: process.env.CORS_ORIGIN,
     credentials: true,
