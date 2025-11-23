@@ -115,3 +115,20 @@ export const updateCollection = async (req, res) => {
         res.status(500).json({ error: 'Failed to update collection' })
     }
 }
+
+export const deleteCollection = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const deleted = await CollectionsModel.deleteCollection(id)
+
+        if (!deleted) {
+            return res.status(404).json({ error: 'Collection not found' })
+        }
+
+        res.status(200).json({ message: 'Collection deleted successfully' })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Failed to delete collection' })
+    }
+}

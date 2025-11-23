@@ -63,3 +63,9 @@ export const updateCollectionById = async (id, { name, description }) => {
 
     return result
 }
+
+export const deleteCollection = async (id) => {
+    const [result] = await pool.query('DELETE FROM collections WHERE id = ?', [id])
+
+    return result.affectedRows > 0
+}
