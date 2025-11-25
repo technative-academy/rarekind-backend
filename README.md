@@ -1,7 +1,10 @@
 # 🐾 RareKind – Backend API
 
 RareKind is a backend **Express.js** API that powers a platform where users can showcase their exotic animals and browse collections created by others.  
-This repository pairs with the [**RareKind Frontend**](https://github.com/technative-academy/rarekind-frontend). **API documentation** is available [here](https://rarekind-backend-production.up.railway.app/api-docs/).
+
+This repository pairs with the [**RareKind Frontend**](https://github.com/technative-academy/rarekind-frontend). 
+
+**API documentation** is available [here](https://rarekind-backend-production.up.railway.app/api-docs/).
 
 The backend is deployed on **Railway**, uses **MySQL**, and integrates **Cloudinary** for image hosting.
 
@@ -19,9 +22,11 @@ RareKind provides a complete API for:
 
 The database schema was collaboratively designed using
 **dbdiagram.io**
+
 <img width="924" height="398" alt="image" src="https://github.com/user-attachments/assets/0d4dd353-ebed-47b1-8d29-f1dd5782ef00" />
 
-and visualised using **MySQL Workbench**.
+And visualised using **MySQL Workbench**.
+
 <img width="1057" height="446" alt="image" src="https://github.com/user-attachments/assets/c328edbc-7094-44b8-a2d4-d46390b143b8" />
 
 ---
@@ -167,7 +172,10 @@ RareKind follows a clean and scalable Express.js structure:
 
 ## Testing
 
-When testing endpoints we used an extension on VS code called Postman, The Screenshot below shows testing the endpoint /auth/register
+When testing endpoints we used an extension on VS code called Postman. 
+
+The Screenshot below shows testing the endpoint /auth/register
+
 ![alt text](image.png)
 
 ## 🚀 Deployment
