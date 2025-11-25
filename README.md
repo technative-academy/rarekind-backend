@@ -1,8 +1,8 @@
 # 🐾 RareKind – Backend API
 
-RareKind is a backend **Express.js** API that powers a platform where users can showcase their exotic animals and browse collections created by others.  
+RareKind is a backend **Express.js** API that powers a platform where users can showcase their exotic animals and browse collections created by others.
 
-This repository pairs with the [**RareKind Frontend**](https://github.com/technative-academy/rarekind-frontend). 
+This repository pairs with the [**RareKind Frontend**](https://github.com/technative-academy/rarekind-frontend).
 
 **API documentation** is available [here](https://rarekind-backend-production.up.railway.app/api-docs/).
 
@@ -172,7 +172,7 @@ RareKind follows a clean and scalable Express.js structure:
 
 ## Testing
 
-When testing endpoints we used an extension on VS code called Postman. 
+When testing endpoints we used an extension on VS code called Postman.
 
 The Screenshot below shows testing the endpoint /auth/register
 
