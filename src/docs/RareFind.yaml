@@ -190,7 +190,7 @@ paths:
                 '404':
                     description: Collection not found
 
-        put:
+        patch:
             tags:
                 - Collections
             summary: Update a collection by ID
@@ -296,7 +296,7 @@ paths:
                 '404':
                     description: Animal not found
 
-        put:
+        patch:
             tags:
                 - Animals
             summary: Update an existing animal
@@ -339,12 +339,12 @@ components:
         RegisterRequest:
             type: object
             required:
-                - username
+                - email
                 - password
             properties:
                 name:
                     type: string
-                username:
+                email:
                     type: string
                 password:
                     type: string
@@ -354,10 +354,10 @@ components:
         LoginRequest:
             type: object
             required:
-                - username
+                - email
                 - password
             properties:
-                username:
+                email:
                     type: string
                 password:
                     type: string
@@ -369,7 +369,7 @@ components:
                     type: integer
                 name:
                     type: string
-                username:
+                email:
                     type: string
                 password:
                     type: string
@@ -387,6 +387,14 @@ components:
                     type: string
                 description:
                     type: string
+                animals:
+                    type: jsonarray
+                classifications:
+                    type: jsonarray
+                created_at:
+                    type: datetime
+                updated_at:
+                    type: datetime
 
         Animal:
             type: object

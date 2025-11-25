@@ -172,7 +172,7 @@ RareKind follows a clean and scalable Express.js structure:
 
 ## Testing
 
-When testing endpoints we used an extension on VS code called Postman.
+When testing endpoints we used an extension on VS code called Postman. 
 
 The Screenshot below shows testing the endpoint /auth/register
 
