@@ -11,6 +11,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import './src/db/connection.js'
 import cookieParser from 'cookie-parser'
+import rateLimit from 'express-rate-limit'
 
 dotenv.config()
 
@@ -27,10 +28,23 @@ const corsOptions = {
     credentials: true,
 }
 
+app.set('trust proxy', 1)
+
 app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use(cookieParser())
+
+// Rate limiting
+const limiter = rateLimit({
+    windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MINUTES || 15) * 60 * 1000,
+    limit: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || 100),
+    message: 'Too many requests from this IP, please try again later.',
+    standardHeaders: true,
+    legacyHeaders: false,
+})
+
+app.use(limiter)
 
 app.use('/users', usersRoutes)
 app.use('/animals', animalsRoutes)
